@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float checkGroundRadius;
 
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private MovementAnimations movementAnimations;
+    private static readonly int Burning = Animator.StringToHash("Burning");
+    private bool burning = false;
 
     // Start is called before the first frame update
     void Start()
@@ -71,6 +74,15 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             isGrounded = false;
+        }
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.name.Equals("Fire") && !burning)
+        {
+            burning = true;
+            myAnim.SetTrigger(Burning);
         }
     }
 }

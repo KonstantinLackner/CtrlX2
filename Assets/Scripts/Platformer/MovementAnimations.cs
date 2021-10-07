@@ -9,6 +9,8 @@ public class MovementAnimations : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+
+    public bool burning { get; set; }
     
     // Update is called once per frame
     void Update()

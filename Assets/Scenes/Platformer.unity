@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 87543870}
   - component: {fileID: 87543869}
   - component: {fileID: 87543868}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: bridge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -676,8 +676,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1222993083
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 6888708756529517008, guid: a3496782232cb2b4fa249ef94a2971f4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -744,6 +744,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  movementAnimations: {fileID: 0}
 --- !u!61 &516983912
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -975,7 +976,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 3f423a42f8cd45043b3154279172ffa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
