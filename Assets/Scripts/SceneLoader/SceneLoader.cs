@@ -10,7 +10,11 @@ public class SceneLoader : MonoBehaviour
     public static SceneLoader instance;
     // public Animator transitionAnimator;
     public String answer { get; set; }
-    public Sentence sentenceToGoTo { get; set; }
+    public Sentence nextSentence { get; set; }
+
+    private GameBools gameBools;
+
+    public Sentence[] levelSentences { get; set; }
 
     private void Awake()
     {
@@ -27,39 +31,44 @@ public class SceneLoader : MonoBehaviour
         /*
          * Bullshit test init
          */
-        Sentence testSentence1 = new Sentence("you walk over the burning bridge", 2, 1);
+        Sentence testSentence1 = new Sentence("you cross the burning bridge", 2, 1);
         Sentence testSentence2 = new Sentence("you kill the troll with your sword",2, 1);
         Sentence testSentence3 = new Sentence("you ignore the troll", 0, 1);
-            
-        Variation testVariationS1 = new Variation("you burn the bridge", testSentence2, "A troll rises from the ashes.'You burn me house!' He spits at you as he shouts");
-        Variation testVariationS2 = new Variation("you walk over the bridge", testSentence3, "As you walk over the bridge, a troll happily waves at you");
+        
+        nextSentence = testSentence1;
+
+        levelSentences = new[] {testSentence1, testSentence2, testSentence3};
+        
+        LinkedList<bool> boolListVariationS1 = new LinkedList<bool>();
+        boolListVariationS1.AddLast(false);
+        boolListVariationS1.AddLast(true);
+        Variation testVariationS1 = new Variation("you burn the bridge", 1, boolListVariationS1);
             
         LinkedList<Variation> variations = new LinkedList<Variation>();
         variations.AddLast(testVariationS1);
-        variations.AddLast(testVariationS2);
             
         testSentence1.variations = variations;
-        
-        sentenceToGoTo = testSentence1;
     }
 
-    public void LoadStoryLevel(String answer, Sentence sentenceToGoTo)
+    private void Start()
     {
-        this.answer = answer;
-        this.sentenceToGoTo = sentenceToGoTo;
-        StartCoroutine(LoadStoryLevelCoroutine());
+        gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
+    }
+
+    public void LoadLevel(int levelToLoad, LinkedList<bool> boolList)
+    {
+        if (levelToLoad == 1)
+        {
+            LoadLevel1(boolList);
+        } else if (levelToLoad == 2)
+        {
+            
+        } else if (levelToLoad == 3)
+        {
+            
+        }
     }
     
-    IEnumerator LoadStoryLevelCoroutine()
-    {
-
-        // transitionAnimator.SetTrigger("StartFade");
-
-        yield return new WaitForSeconds(0.1f);
-
-        SceneManager.LoadScene("Scenes/Story");
-    }
-
     public void LoadInputLevel()
     {
         StartCoroutine(LoadInputLevelCoroutine());
@@ -73,5 +82,19 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         SceneManager.LoadScene("Scenes/Input");
+    }
+
+    public void LoadLevel1(LinkedList<bool> boolList)
+    {
+        gameBools.AssignBoolsLevel1(boolList);
+        nextSentence = levelSentences[1];
+        StartCoroutine(LoadLevel1Coroutine());
+    }
+
+    IEnumerator LoadLevel1Coroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        SceneManager.LoadScene("Scenes/Level1");
     }
 }

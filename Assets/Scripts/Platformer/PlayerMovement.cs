@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.name.Equals("Fire") && !burning)
+        if (other.gameObject.layer == 8)
         {
             burning = true;
             myAnim.SetTrigger(Burning);
