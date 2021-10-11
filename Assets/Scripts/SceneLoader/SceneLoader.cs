@@ -13,7 +13,6 @@ public class SceneLoader : MonoBehaviour
     public Sentence nextSentence { get; set; }
 
     private GameBools gameBools;
-
     public Sentence[] levelSentences { get; set; }
 
     private void Awake()
@@ -38,10 +37,8 @@ public class SceneLoader : MonoBehaviour
         nextSentence = testSentence1;
 
         levelSentences = new[] {testSentence1, testSentence2, testSentence3};
-        
-        LinkedList<bool> boolListVariationS1 = new LinkedList<bool>();
-        boolListVariationS1.AddLast(false);
-        boolListVariationS1.AddLast(true);
+
+        bool[] boolListVariationS1 = {false, true};
         Variation testVariationS1 = new Variation("you burn the bridge", 1, boolListVariationS1);
             
         LinkedList<Variation> variations = new LinkedList<Variation>();
@@ -55,7 +52,7 @@ public class SceneLoader : MonoBehaviour
         gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
     }
 
-    public void LoadLevel(int levelToLoad, LinkedList<bool> boolList)
+    public void LoadLevel(int levelToLoad, bool[] boolList)
     {
         if (levelToLoad == 1)
         {
@@ -84,10 +81,10 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Scenes/Input");
     }
 
-    public void LoadLevel1(LinkedList<bool> boolList)
+    public void LoadLevel1(bool[] boolList)
     {
         gameBools.AssignBoolsLevel1(boolList);
-        nextSentence = levelSentences[1];
+        // nextSentence = levelSentences[1];
         StartCoroutine(LoadLevel1Coroutine());
     }
 

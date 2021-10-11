@@ -21,15 +21,21 @@ public class PlayerMovement : MonoBehaviour
     private static readonly int Burning = Animator.StringToHash("Burning");
     private bool burning = false;
 
+    private bool canMove = true;
+    private SceneLoader sceneLoader;
+
     // Start is called before the first frame update
     void Start()
     {
+        sceneLoader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Move();
+        if (canMove) {
+            Move();
+        }
         CheckIfGrounded();
         Jump();
         JumpEnhancement();
@@ -83,6 +89,15 @@ public class PlayerMovement : MonoBehaviour
         {
             burning = true;
             myAnim.SetTrigger(Burning);
+
+            StartCoroutine(playerDies());
         }
+    }
+
+    private IEnumerator playerDies()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(2);
+        sceneLoader.LoadInputLevel();
     }
 }

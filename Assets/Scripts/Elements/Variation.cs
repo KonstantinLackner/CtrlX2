@@ -7,9 +7,9 @@ namespace DefaultNamespace
     {
         public String sentence { get; }
         public int leadsToLevel { get; }
-        public LinkedList<bool> boolList { get; set; }
+        public bool[] boolList { get; set; }
 
-        public Variation(String sentence, int leadsToLevel, LinkedList<bool> boolList)
+        public Variation(String sentence, int leadsToLevel, bool[] boolList)
         {
             this.sentence = sentence;
             this.leadsToLevel = leadsToLevel;

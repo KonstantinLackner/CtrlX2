@@ -18,19 +18,17 @@ public class GameBools : MonoBehaviour
             DontDestroyOnLoad(this.gameObject);
         }
     }
-    public void AssignBoolsLevel1(LinkedList<bool> boolList)
+    public void AssignBoolsLevel1(bool[] boolList)
     {
-        for (int i = 0; i <= boolList.Count; i++)
+        for (int i = 0; i <= boolList.Length; i++)
         {
             switch (i)
             {
                 case 0:
-                    Level1Fire = boolList.First.Value;
-                    boolList.RemoveFirst();
+                    Level1Fire = boolList[0];
                     break;
                 case 1:
-                    Level1BridgeBurn = boolList.First.Value;
-                    boolList.RemoveFirst();
+                    Level1BridgeBurn = boolList[1];
                     break;
             }
         }
