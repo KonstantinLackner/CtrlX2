@@ -38,12 +38,20 @@ public class SceneLoader : MonoBehaviour
 
         levelSentences = new[] {testSentence1, testSentence2, testSentence3};
 
-        bool[] boolListVariationS1 = {false, true};
-        Variation testVariationS1 = new Variation("you burn the bridge", 1, boolListVariationS1);
+        bool[] boolListVariationS1V1 = {false, true};
+        Variation testVariationS1V1 = new Variation("you burn the bridge", 1, boolListVariationS1V1);
+        
+        bool[] boolListVariationS1V2 = {false, false};
+        Variation testVariationS1V2 = new Variation("you cross the bridge", 1, boolListVariationS1V2);
+        
+        bool[] boolListVariationS1V3 = {true, false};
+        Variation testVariationS1V3 = new Variation("you cross the burning bridge", 1, boolListVariationS1V3);
             
         LinkedList<Variation> variations = new LinkedList<Variation>();
-        variations.AddLast(testVariationS1);
-            
+        variations.AddLast(testVariationS1V1);
+        variations.AddLast(testVariationS1V2);
+        variations.AddLast(testVariationS1V3);
+
         testSentence1.variations = variations;
     }
 
