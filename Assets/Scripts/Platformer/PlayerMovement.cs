@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
@@ -98,6 +99,19 @@ public class PlayerMovement : MonoBehaviour
     {
         canMove = false;
         yield return new WaitForSeconds(2);
+        sceneLoader.LoadInputLevel();
+    }
+
+    public void killPlayer()
+    {
+        StartCoroutine(playerVoidKill());
+    }
+    
+    private IEnumerator playerVoidKill()
+    {
+        Destroy(GetComponent<SpriteRenderer>());
+        canMove = false;
+        yield return new WaitForSeconds(5);
         sceneLoader.LoadInputLevel();
     }
 }

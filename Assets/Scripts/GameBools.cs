@@ -6,6 +6,7 @@ public class GameBools : MonoBehaviour
     public bool Level1Fire { get; set; } = false;
     public bool Level1BridgeBurn { get; set; } = false;
     public bool Level2Hero { get; set; } = false;
+    public bool Level2Void { get; set; } = false;
 
     private void Awake()
     {
@@ -28,6 +29,22 @@ public class GameBools : MonoBehaviour
                     break;
                 case 1:
                     Level1BridgeBurn = boolList[1];
+                    break;
+            }
+        }
+    }
+    
+    public void AssignBoolsLevel2(bool[] boolList)
+    {
+        for (int i = 0; i <= boolList.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    Level2Hero = boolList[0];
+                    break;
+                case 1:
+                    Level2Void = boolList[1];
                     break;
             }
         }

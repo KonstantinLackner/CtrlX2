@@ -30,16 +30,13 @@ public class SceneLoader : MonoBehaviour
         }
         
         /*
-         * Bullshit test init
+         * Sentence 1
+         * -------------------------------------------
          */
-        Sentence testSentence1 = new Sentence("you cross the burning bridge", 2, 1);
-        Sentence testSentence2 = new Sentence("you are not a hero",3, 0);
-        Sentence testSentence3 = new Sentence("you rescue a princess from a dragon", 0, 1);
+        Sentence sentence1 = new Sentence("you cross the burning bridge", 2, 1);
         
-        nextSentence = testSentence1;
-
-        levelSentences = new[] {testSentence1, testSentence2, testSentence3};
-
+        nextSentence = sentence1;
+        
         bool[] boolListVariationS1V1 = {false, true};
         Variation testVariationS1V1 = new Variation("you burn the bridge", 1, boolListVariationS1V1);
         
@@ -49,12 +46,61 @@ public class SceneLoader : MonoBehaviour
         bool[] boolListVariationS1V3 = {true, false};
         Variation testVariationS1V3 = new Variation("you cross the burning bridge", 1, boolListVariationS1V3);
             
-        LinkedList<Variation> variations = new LinkedList<Variation>();
-        variations.AddLast(testVariationS1V1);
-        variations.AddLast(testVariationS1V2);
-        variations.AddLast(testVariationS1V3);
+        LinkedList<Variation> variationsSentence1 = new LinkedList<Variation>();
+        variationsSentence1.AddLast(testVariationS1V1);
+        variationsSentence1.AddLast(testVariationS1V2);
+        variationsSentence1.AddLast(testVariationS1V3);
 
-        testSentence1.variations = variations;
+        sentence1.variations = variationsSentence1;
+        // ------------------------------------------
+        
+        /*
+        * Sentence 2
+        * -------------------------------------------
+        */
+        Sentence sentence2 = new Sentence("you are not a hero", 2, 0);
+        
+        bool[] boolListVariationS2V1 = {true, false};
+        Variation testVariationS2V1 = new Variation("you are a hero", 2, boolListVariationS2V1);
+        
+        bool[] boolListVariationS2V2 = {false, true};
+        Variation testVariationS2V2 = new Variation("you are not", 2, boolListVariationS2V2);
+        
+        bool[] boolListVariationS2V3 = {false, false};
+        Variation testVariationS2V3 = new Variation("you are not a hero", 2, boolListVariationS2V3);
+            
+        LinkedList<Variation> variationsSentence2 = new LinkedList<Variation>();
+        variationsSentence2.AddLast(testVariationS2V1);
+        variationsSentence2.AddLast(testVariationS2V2);
+        variationsSentence2.AddLast(testVariationS2V3);
+
+        sentence2.variations = variationsSentence2;
+        // ------------------------------------------
+        
+        /*
+        * Sentence 3
+        * -------------------------------------------
+        */
+        Sentence sentence3 = new Sentence("you are not a hero", 2, 0);
+        
+        bool[] boolListVariationS3V1 = {true, false};
+        Variation testVariationS3V1 = new Variation("you are a hero", 2, boolListVariationS3V1);
+        
+        bool[] boolListVariationS3V2 = {false, true};
+        Variation testVariationS3V2 = new Variation("you are not", 2, boolListVariationS3V2);
+        
+        bool[] boolListVariationS3V3 = {false, false};
+        Variation testVariationS3V3 = new Variation("you are not a hero", 2, boolListVariationS3V3);
+            
+        LinkedList<Variation> variationsSentence3 = new LinkedList<Variation>();
+        variationsSentence3.AddLast(testVariationS3V1);
+        variationsSentence3.AddLast(testVariationS3V2);
+        variationsSentence3.AddLast(testVariationS3V3);
+
+        sentence2.variations = variationsSentence2;
+        // ------------------------------------------
+        
+        levelSentences = new[] {sentence1, sentence2, sentence3};
     }
 
     private void Start()
@@ -69,10 +115,10 @@ public class SceneLoader : MonoBehaviour
             LoadLevel1(boolList);
         } else if (levelToLoad == 2)
         {
-            
+            LoadLevel2(boolList);
         } else if (levelToLoad == 3)
         {
-            
+            // LoadLevel3(boolList);
         }
     }
     
@@ -103,5 +149,19 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         SceneManager.LoadScene("Scenes/Level1");
+    }
+    
+    public void LoadLevel2(bool[] boolList)
+    {
+        gameBools.AssignBoolsLevel2(boolList);
+        // nextSentence = levelSentences[1];
+        StartCoroutine(LoadLevel2Coroutine());
+    }
+
+    IEnumerator LoadLevel2Coroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        SceneManager.LoadScene("Scenes/Level2");
     }
 }
