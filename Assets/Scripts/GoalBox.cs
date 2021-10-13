@@ -9,23 +9,21 @@ public class GoalBox : MonoBehaviour
 
     [SerializeField] private int leadsToLevel;
 
+    private SceneLoader sceneLoader;
+
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        sceneLoader = GameObject.Find("SceneLoader").GetComponent<SceneLoader>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 9)
         {
-            SceneManager.LoadScene("Scenes/Level2");
+            sceneLoader.currentLevelCount++;
+            sceneLoader.nextSentence = sceneLoader.levelSentences[sceneLoader.currentLevelCount];
+            sceneLoader.LoadInputLevel();
         }
     }
 }

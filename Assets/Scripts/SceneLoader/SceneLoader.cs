@@ -15,6 +15,8 @@ public class SceneLoader : MonoBehaviour
     private GameBools gameBools;
     public Sentence[] levelSentences { get; set; }
 
+    public int currentLevelCount = 0;
+
     private void Awake()
     {
         if (instance == null)
@@ -31,8 +33,8 @@ public class SceneLoader : MonoBehaviour
          * Bullshit test init
          */
         Sentence testSentence1 = new Sentence("you cross the burning bridge", 2, 1);
-        Sentence testSentence2 = new Sentence("you kill the troll with your sword",2, 1);
-        Sentence testSentence3 = new Sentence("you ignore the troll", 0, 1);
+        Sentence testSentence2 = new Sentence("you are not a hero",3, 0);
+        Sentence testSentence3 = new Sentence("you rescue a princess from a dragon", 0, 1);
         
         nextSentence = testSentence1;
 

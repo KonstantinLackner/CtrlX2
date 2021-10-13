@@ -5,6 +5,7 @@ public class GameBools : MonoBehaviour
     public static GameBools instance;
     public bool Level1Fire { get; set; } = false;
     public bool Level1BridgeBurn { get; set; } = false;
+    public bool Level2Hero { get; set; } = false;
 
     private void Awake()
     {

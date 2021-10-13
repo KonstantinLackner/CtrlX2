@@ -732,6 +732,7 @@ MonoBehaviour:
   rigidbody: {fileID: 999530193}
   animator: {fileID: 999530190}
   spriteRenderer: {fileID: 999530194}
+  gameBools: {fileID: 1510007425}
 --- !u!114 &999530197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -745,10 +746,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRigidbody: {fileID: 999530193}
-  speed: 5
-  jumpForce: 8
+  speed: 7
+  jumpForce: 9
   fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  lowJumpMultiplier: 3
   myAnim: {fileID: 999530190}
   mySpriteRenderer: {fileID: 999530194}
   isGroundChecker: {fileID: 1889565251}

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,9 +10,18 @@ public class MovementAnimations : MonoBehaviour
     [SerializeField] private SpriteRenderer spriteRenderer;
     
     private static readonly int IsWalking = Animator.StringToHash("IsWalking");
+    private static readonly int IsHero = Animator.StringToHash("IsHero");
 
-    public bool burning { get; set; }
-    
+    public GameBools gameBools;
+
+    private void Start()
+    {
+        if (gameBools.Level2Hero)
+        {
+            animator.SetBool(IsHero, true);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
