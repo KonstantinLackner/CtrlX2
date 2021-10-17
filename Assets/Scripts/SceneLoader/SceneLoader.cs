@@ -83,15 +83,25 @@ public class SceneLoader : MonoBehaviour
         */
         Sentence sentence3 = new Sentence("you are not a hero", 2, 0);
         
-        bool[] boolListVariationS3V1 = {true, false};
-        Variation testVariationS3V1 = new Variation("you are a hero", 2, boolListVariationS3V1);
+        // princess aggressive, princess target, dragon aggressive, dragon target, you target
+        bool[] boolListVariationS3V1 = {true, false, false, false, true};
+        Variation testVariationS3V1 = new Variation("a princess rescues a dragon from you", 4, boolListVariationS3V1);
         
-        bool[] boolListVariationS3V2 = {false, true};
-        Variation testVariationS3V2 = new Variation("you are not", 2, boolListVariationS3V2);
+        bool[] boolListVariationS3V2 = {true, false, false, true, false};
+        Variation testVariationS3V2 = new Variation("a princess rescues you from a dragon", 2, boolListVariationS3V2);
         
-        bool[] boolListVariationS3V3 = {false, false};
-        Variation testVariationS3V3 = new Variation("you are not a hero", 2, boolListVariationS3V3);
-            
+        bool[] boolListVariationS3V3 = {false, true, true, false, false};
+        Variation testVariationS3V3 = new Variation("a dragon rescues you from a princess", 2, boolListVariationS3V3);
+        
+        bool[] boolListVariationS3V4 = {false, false, true, false, true};
+        Variation testVariationS3V4 = new Variation("a dragon rescues a princess from you", 2, boolListVariationS3V3);
+        
+        bool[] boolListVariationS3V5 = {false, true, true, false, false};
+        Variation testVariationS3V5 = new Variation("you rescue a princess from a dragon", 2, boolListVariationS3V3);
+        
+        bool[] boolListVariationS3V6 = {true, false, false, true, false};
+        Variation testVariationS3V6 = new Variation("you rescue a dragon from a princess", 2, boolListVariationS3V3);
+        
         LinkedList<Variation> variationsSentence3 = new LinkedList<Variation>();
         variationsSentence3.AddLast(testVariationS3V1);
         variationsSentence3.AddLast(testVariationS3V2);

@@ -7,6 +7,11 @@ public class GameBools : MonoBehaviour
     public bool Level1BridgeBurn { get; set; } = false;
     public bool Level2Hero { get; set; } = false;
     public bool Level2Void { get; set; } = false;
+    public bool Level3PrincessAggressive { get; set; } = false;
+    public bool Level3PrincessTarget { get; set; } = false;
+    public bool Level3DragonAggressive { get; set; } = false;
+    public bool Level3DragonTarget { get; set; } = false;
+    public bool Level3YouTarget { get; set; } = false;
 
     private void Awake()
     {
@@ -45,6 +50,31 @@ public class GameBools : MonoBehaviour
                     break;
                 case 1:
                     Level2Void = boolList[1];
+                    break;
+            }
+        }
+    }
+    
+    public void AssignBoolsLevel3(bool[] boolList)
+    {
+        for (int i = 0; i <= boolList.Length; i++)
+        {
+            switch (i)
+            {
+                case 0:
+                    Level3PrincessAggressive = boolList[0];
+                    break;
+                case 1:
+                    Level3PrincessTarget = boolList[1];
+                    break;
+                case 2:
+                    Level3DragonAggressive = boolList[2];
+                    break;
+                case 3:
+                    Level3DragonTarget = boolList[3];
+                    break;
+                case 4:
+                    Level3YouTarget = boolList[4];
                     break;
             }
         }

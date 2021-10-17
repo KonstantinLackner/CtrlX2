@@ -5,11 +5,15 @@ using UnityEngine;
 public class Level2Manager : MonoBehaviour
 {
 
+    private GameObject player;
     private PlayerMovement playerScript;
-    
+    private static readonly int IsHero = Animator.StringToHash("IsHero");
+
     void Start()
     {
-        playerScript = GameObject.Find("Player").GetComponent<PlayerMovement>();
+        player = GameObject.Find("Player");
+        
+        playerScript = player.GetComponent<PlayerMovement>();
         
         GameBools gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
         
@@ -21,6 +25,9 @@ public class Level2Manager : MonoBehaviour
         if (voidJoke)
         {
             playerScript.killPlayer();
+        } else if (hero)
+        {
+            player.GetComponent<Animator>().SetBool(IsHero, true);
         }
     }
 }
