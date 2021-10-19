@@ -5,13 +5,22 @@ using UnityEngine;
 public class Level3Manager : MonoBehaviour
 {
     private GameObject player;
+    private GameObject princess;
+    private GameObject dragon;
+    private PatrolingAndAttacking princessScript;
+    private PatrolingAndAttacking dragonScript;
 
     void Start()
     {
         player = GameObject.Find("Player");
+        princess = GameObject.Find("Princess");
+        dragon = GameObject.Find("Dragon");
+        
+        princessScript = princess.GetComponent<PatrolingAndAttacking>();
+        dragonScript = dragon.GetComponent<PatrolingAndAttacking>();
 
         GameBools gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
-        
+
         // princess aggressive, princess target, dragon aggressive, dragon target, you target
         initLevel(gameBools.Level3PrincessAggressive, gameBools.Level3PrincessTarget, gameBools.Level3DragonAggressive, gameBools.Level3DragonTarget, gameBools.Level3YouTarget);
     }
@@ -20,22 +29,29 @@ public class Level3Manager : MonoBehaviour
     {
         if (princessAggressive)
         {
-            // set princess aggressive
+            princessScript.aggressive = true;
             if (dragonTarget)
             {
                 // Set dragon as target for princess
+                princessScript.aggressionAgainst = dragon;
+                princessScript.hurtableLayerMask = 11;
             } else if (youTarget)
             {
                 // Set you as target for princess
+                princessScript.aggressionAgainst = player;
+                princessScript.hurtableLayerMask = 9;
             }
         } else if (dragonAggressive)
         {
+            dragonScript.aggressive = true;
             if (princessTarget)
             {
-                
+                dragonScript.aggressionAgainst = princess;
+                dragonScript.hurtableLayerMask = 10;
             } else if (youTarget)
             {
-                
+                dragonScript.aggressionAgainst = player;
+                dragonScript.hurtableLayerMask = 9;
             }
         }
     }

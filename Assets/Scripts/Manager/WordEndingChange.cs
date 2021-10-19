@@ -15,6 +15,12 @@ namespace DefaultNamespace
 
         private Text textComponent;
         private String text;
+        private GameStateManager gameStateManager;
+
+        private void Start()
+        {
+            gameStateManager = GameObject.Find("Canvas").GetComponentInChildren<GameStateManager>();
+        }
 
         // Called by the word OnPointerDown depending on the state
         public void changeEnding()
@@ -37,6 +43,9 @@ namespace DefaultNamespace
             }
 
             textComponent.text = text;
+            
+            // Reload variation
+            gameStateManager.AlignWords();
             
             // Make validateButton clickable again
             GameObject.Find("ValidateButton").GetComponent<Image>().color = Color.black;

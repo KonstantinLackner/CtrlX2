@@ -81,33 +81,36 @@ public class SceneLoader : MonoBehaviour
         * Sentence 3
         * -------------------------------------------
         */
-        Sentence sentence3 = new Sentence("you are not a hero", 2, 0);
+        Sentence sentence3 = new Sentence("a princess rescues a dragon from you", 0, 2);
         
         // princess aggressive, princess target, dragon aggressive, dragon target, you target
         bool[] boolListVariationS3V1 = {true, false, false, false, true};
-        Variation testVariationS3V1 = new Variation("a princess rescues a dragon from you", 4, boolListVariationS3V1);
+        Variation testVariationS3V1 = new Variation("a princess rescues a dragon from you", 3, boolListVariationS3V1);
         
         bool[] boolListVariationS3V2 = {true, false, false, true, false};
-        Variation testVariationS3V2 = new Variation("a princess rescues you from a dragon", 2, boolListVariationS3V2);
+        Variation testVariationS3V2 = new Variation("a princess rescues you from a dragon", 3, boolListVariationS3V2);
         
         bool[] boolListVariationS3V3 = {false, true, true, false, false};
-        Variation testVariationS3V3 = new Variation("a dragon rescues you from a princess", 2, boolListVariationS3V3);
+        Variation testVariationS3V3 = new Variation("a dragon rescues you from a princess", 3, boolListVariationS3V3);
         
         bool[] boolListVariationS3V4 = {false, false, true, false, true};
-        Variation testVariationS3V4 = new Variation("a dragon rescues a princess from you", 2, boolListVariationS3V3);
+        Variation testVariationS3V4 = new Variation("a dragon rescues a princess from you", 3, boolListVariationS3V4);
         
         bool[] boolListVariationS3V5 = {false, true, true, false, false};
-        Variation testVariationS3V5 = new Variation("you rescue a princess from a dragon", 2, boolListVariationS3V3);
+        Variation testVariationS3V5 = new Variation("you rescue a princess from a dragon", 3, boolListVariationS3V5);
         
         bool[] boolListVariationS3V6 = {true, false, false, true, false};
-        Variation testVariationS3V6 = new Variation("you rescue a dragon from a princess", 2, boolListVariationS3V3);
+        Variation testVariationS3V6 = new Variation("you rescue a dragon from a princess", 3, boolListVariationS3V6);
         
         LinkedList<Variation> variationsSentence3 = new LinkedList<Variation>();
         variationsSentence3.AddLast(testVariationS3V1);
         variationsSentence3.AddLast(testVariationS3V2);
         variationsSentence3.AddLast(testVariationS3V3);
+        variationsSentence3.AddLast(testVariationS3V4);
+        variationsSentence3.AddLast(testVariationS3V5);
+        variationsSentence3.AddLast(testVariationS3V6);
 
-        sentence2.variations = variationsSentence2;
+        sentence3.variations = variationsSentence3;
         // ------------------------------------------
         
         levelSentences = new[] {sentence1, sentence2, sentence3};
@@ -128,7 +131,7 @@ public class SceneLoader : MonoBehaviour
             LoadLevel2(boolList);
         } else if (levelToLoad == 3)
         {
-            // LoadLevel3(boolList);
+            LoadLevel3(boolList);
         }
     }
     
@@ -150,7 +153,6 @@ public class SceneLoader : MonoBehaviour
     public void LoadLevel1(bool[] boolList)
     {
         gameBools.AssignBoolsLevel1(boolList);
-        // nextSentence = levelSentences[1];
         StartCoroutine(LoadLevel1Coroutine());
     }
 
@@ -164,7 +166,6 @@ public class SceneLoader : MonoBehaviour
     public void LoadLevel2(bool[] boolList)
     {
         gameBools.AssignBoolsLevel2(boolList);
-        // nextSentence = levelSentences[1];
         StartCoroutine(LoadLevel2Coroutine());
     }
 
@@ -173,5 +174,18 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         SceneManager.LoadScene("Scenes/Level2");
+    }
+    
+    public void LoadLevel3(bool[] boolList)
+    {
+        gameBools.AssignBoolsLevel3(boolList);
+        StartCoroutine(LoadLevel3Coroutine());
+    }
+
+    IEnumerator LoadLevel3Coroutine()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        SceneManager.LoadScene("Scenes/Level3");
     }
 }
