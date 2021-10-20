@@ -29,9 +29,24 @@ public class PatrolingAndAttacking : MonoBehaviour
 
     private bool attacking = false;
 
+    private GameBools gameBools;
+
     private void Start()
     {
-        throw new NotImplementedException();
+        gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
+        
+        if (aggressive)
+        {
+            if (gameBools.Level3PrincessTarget)
+            {
+                aggressionAgainst = GameObject.Find("Princess");
+            }
+            else
+            {
+                aggressionAgainst = GameObject.Find("Dragon");
+            }
+        }
+        
     }
 
     // Update is called once per frame
@@ -61,7 +76,7 @@ public class PatrolingAndAttacking : MonoBehaviour
         }
 
         // ATTACK
-        if (Mathf.Abs(gameObject.transform.position.x - aggressionAgainst.transform.position.x) <= rangeToHit)
+        if (aggressive && (Mathf.Abs(gameObject.transform.position.x - aggressionAgainst.transform.position.x) <= rangeToHit))
         {
             if (!attacking)
             {

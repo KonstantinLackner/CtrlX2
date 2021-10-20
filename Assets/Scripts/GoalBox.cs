@@ -22,7 +22,10 @@ public class GoalBox : MonoBehaviour
         if (other.gameObject.layer == 9)
         {
             sceneLoader.currentLevelCount++;
-            sceneLoader.nextSentence = sceneLoader.levelSentences[sceneLoader.currentLevelCount];
+            if (sceneLoader.currentLevelCount <= 2)
+            {
+                sceneLoader.nextSentence = sceneLoader.levelSentences[sceneLoader.currentLevelCount];
+            }
             sceneLoader.LoadInputLevel();
         }
     }
