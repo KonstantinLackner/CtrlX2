@@ -16,6 +16,7 @@ public class PatrolingAndAttacking : MonoBehaviour
     [SerializeField] private Transform pointRight;
     [SerializeField] private Transform attackOrigin;
     [SerializeField] private float attackRadius;
+    
     public int hurtableLayerMask { get; set; }
 
     [SerializeField] private Animator myAnimator;
@@ -94,6 +95,7 @@ public class PatrolingAndAttacking : MonoBehaviour
 
     private IEnumerator attack()
     {
+        Debug.Log("Attacking");
         myAnimator.SetTrigger(Attack);
         
         Collider2D[] damagedObjects =
@@ -101,7 +103,7 @@ public class PatrolingAndAttacking : MonoBehaviour
 
         foreach (var damagedObject in damagedObjects)
         {
-            Hurtable hurtable = damagedObject.GetComponent<Hurtable>();
+            Hurtable hurtable = damagedObject.transform.parent.GetComponent<Hurtable>();
             hurtable.reduceHealth();
         }
         

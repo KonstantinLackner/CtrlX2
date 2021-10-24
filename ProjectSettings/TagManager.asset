@@ -41,6 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: treeBackground
+    uniqueID: 3289439253
+    locked: 0
+  - name: mapbackground
+    uniqueID: 3261354321
+    locked: 0
+  - name: Rest
+    uniqueID: 895798625
+    locked: 0
   - name: Player
     uniqueID: 3071974213
+    locked: 0
+  - name: treeForeground
+    uniqueID: 1485850663
     locked: 0

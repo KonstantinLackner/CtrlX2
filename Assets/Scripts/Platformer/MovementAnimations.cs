@@ -31,12 +31,16 @@ public class MovementAnimations : MonoBehaviour
         } 
         else if (rigidbody.velocity.x > 0.05)
         {
-            spriteRenderer.flipX = false;
+            Vector3 newScale = transform.localScale;
+            newScale.x = 1;
+            transform.localScale = newScale;
             animator.SetBool(IsWalking, true);
         }
         else
         {
-            spriteRenderer.flipX = true;
+            Vector3 newScale = transform.localScale;
+            newScale.x = -1;
+            transform.localScale = newScale;
             animator.SetBool(IsWalking, true);
         }
     }
