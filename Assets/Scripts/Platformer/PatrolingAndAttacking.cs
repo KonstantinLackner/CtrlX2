@@ -17,7 +17,7 @@ public class PatrolingAndAttacking : MonoBehaviour
     [SerializeField] private Transform attackOrigin;
     [SerializeField] private float attackRadius;
     
-    public int hurtableLayerMask { get; set; }
+    public LayerMask hurtableLayerMask { get; set; }
 
     [SerializeField] private Animator myAnimator;
 
@@ -100,10 +100,10 @@ public class PatrolingAndAttacking : MonoBehaviour
         
         Collider2D[] damagedObjects =
             Physics2D.OverlapCircleAll(attackOrigin.position, attackRadius, hurtableLayerMask);
-
+        
         foreach (var damagedObject in damagedObjects)
         {
-            Hurtable hurtable = damagedObject.transform.parent.GetComponent<Hurtable>();
+            Hurtable hurtable = damagedObject.gameObject.GetComponent<Hurtable>();
             hurtable.reduceHealth();
         }
         

@@ -34,12 +34,12 @@ public class Level3Manager : MonoBehaviour
             {
                 // Set dragon as target for princess
                 princessScript.aggressionAgainst = dragon;
-                princessScript.hurtableLayerMask = 11;
+                princessScript.hurtableLayerMask = LayerMask.GetMask("Dragon");
             } else if (youTarget)
             {
                 // Set you as target for princess
                 princessScript.aggressionAgainst = player;
-                princessScript.hurtableLayerMask = 9;
+                princessScript.hurtableLayerMask = LayerMask.GetMask("Player");
             }
         } else if (dragonAggressive)
         {
@@ -47,11 +47,11 @@ public class Level3Manager : MonoBehaviour
             if (princessTarget)
             {
                 dragonScript.aggressionAgainst = princess;
-                dragonScript.hurtableLayerMask = 10;
+                dragonScript.hurtableLayerMask = LayerMask.GetMask("Princess");
             } else if (youTarget)
             {
                 dragonScript.aggressionAgainst = player;
-                dragonScript.hurtableLayerMask = 9;
+                dragonScript.hurtableLayerMask = LayerMask.GetMask("Player");
             }
         }
     }
