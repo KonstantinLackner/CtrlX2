@@ -19,6 +19,7 @@ public class Level1Manager : MonoBehaviour
             GameObject.Find("burnedBridge").SetActive(false);
             GameObject.Find("BridgeFireLeft").SetActive(false);
             GameObject.Find("BridgeFireRight").SetActive(false);
+            GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = new Color(1f, 0.4f, 0f);
         } else if (bridgeBurn)
         {
             GameObject.Find("BridgeFireLeft").SetActive(true);
@@ -26,6 +27,7 @@ public class Level1Manager : MonoBehaviour
             GameObject.Find("burnedBridge").SetActive(true);
             GameObject.Find("BridgeFire").SetActive(false);
             GameObject.Find("bridge").SetActive(false);
+            GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = new Color(1f, 0.4f, 0);
         }
         else
         {
@@ -34,6 +36,7 @@ public class Level1Manager : MonoBehaviour
             GameObject.Find("BridgeFireLeft").SetActive(false);
             GameObject.Find("BridgeFireRight").SetActive(false);
             GameObject.Find("BridgeFire").SetActive(false);
+            GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = new Color(0.8f, 1f, 1f, 0);
         }
     }
 }

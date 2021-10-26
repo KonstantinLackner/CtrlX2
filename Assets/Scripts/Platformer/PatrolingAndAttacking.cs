@@ -16,7 +16,7 @@ public class PatrolingAndAttacking : MonoBehaviour
     [SerializeField] private Transform pointRight;
     [SerializeField] private Transform attackOrigin;
     [SerializeField] private float attackRadius;
-    
+
     public LayerMask hurtableLayerMask { get; set; }
 
     [SerializeField] private Animator myAnimator;
@@ -35,7 +35,7 @@ public class PatrolingAndAttacking : MonoBehaviour
     private void Start()
     {
         gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
-        
+
         if (aggressive)
         {
             if (gameBools.Level3PrincessTarget)
@@ -47,7 +47,6 @@ public class PatrolingAndAttacking : MonoBehaviour
                 aggressionAgainst = GameObject.Find("Dragon");
             }
         }
-        
     }
 
     // Update is called once per frame
@@ -77,7 +76,8 @@ public class PatrolingAndAttacking : MonoBehaviour
         }
 
         // ATTACK
-        if (aggressive && (Mathf.Abs(gameObject.transform.position.x - aggressionAgainst.transform.position.x) <= rangeToHit))
+        if (aggressive && (Mathf.Abs(gameObject.transform.position.x - aggressionAgainst.transform.position.x) <=
+                           rangeToHit))
         {
             if (!attacking)
             {
@@ -97,18 +97,21 @@ public class PatrolingAndAttacking : MonoBehaviour
     {
         Debug.Log("Attacking");
         myAnimator.SetTrigger(Attack);
-        
+
         Collider2D[] damagedObjects =
             Physics2D.OverlapCircleAll(attackOrigin.position, attackRadius, hurtableLayerMask);
-        
-        foreach (var damagedObject in damagedObjects)
+
+        if (damagedObjects.Length > 0)
         {
-            Hurtable hurtable = damagedObject.gameObject.GetComponent<Hurtable>();
-            hurtable.reduceHealth();
+            foreach (var damagedObject in damagedObjects)
+            {
+                Hurtable hurtable = damagedObject.gameObject.GetComponent<Hurtable>();
+                hurtable.reduceHealth();
+            }
         }
-        
+
         yield return new WaitForSeconds(1);
-        
+
         attacking = false;
     }
 }
