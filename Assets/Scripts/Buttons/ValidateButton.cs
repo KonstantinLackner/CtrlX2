@@ -29,7 +29,7 @@ namespace DefaultNamespace
             Variation variation = sentence.CheckIfStringIsVariation(variationString);
             if (variation != null)
             {
-                sceneLoader.LoadLevel(variation.leadsToLevel, variation.boolList);
+                sceneLoader.LoadLevel(variation.leadsToLevel, variation.boolList, variation.killSafe);
             }
             else
             {

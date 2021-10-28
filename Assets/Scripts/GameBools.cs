@@ -14,6 +14,8 @@ public class GameBools : MonoBehaviour
     public bool Level3DragonTarget { get; set; } = false;
     public bool Level3YouTarget { get; set; } = false;
     
+    public bool Level3YouSafe { get; set; }
+    
     public String kill { get; set; }
     
     public String safe { get; set; }
@@ -80,6 +82,9 @@ public class GameBools : MonoBehaviour
                     break;
                 case 4:
                     Level3YouTarget = boolList[4];
+                    break;
+                case 5:
+                    Level3YouSafe = boolList[5];
                     break;
             }
         }

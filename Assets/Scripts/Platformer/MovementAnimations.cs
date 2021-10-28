@@ -14,6 +14,8 @@ public class MovementAnimations : MonoBehaviour
 
     public GameBools gameBools;
 
+    public PatrolingAndAttacking PatrolingAndAttacking;
+
     private void Start()
     {
         if (gameBools.Level2Hero)
@@ -25,22 +27,43 @@ public class MovementAnimations : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PatrolingAndAttacking.aggressive && PatrolingAndAttacking.aggressionAgainst != null)
+        {
+            if (PatrolingAndAttacking.aggressionAgainst.transform.position.x < transform.position.x)
+            {
+                Vector3 newScale = transform.localScale;
+                newScale.x = -1;
+                transform.localScale = newScale;
+            }
+            else
+            {
+                Vector3 newScale = transform.localScale;
+                newScale.x = 1;
+                transform.localScale = newScale; 
+            }
+        }
+        else if (rigidbody.velocity.x > 0)
+        {
+            Vector3 newScale = transform.localScale;
+            newScale.x = 1;
+            transform.localScale = newScale;
+        } 
+        else if (rigidbody.velocity.x < 0)
+        {
+            Vector3 newScale = transform.localScale;
+            newScale.x = -1;
+            transform.localScale = newScale;
+        }
         if (Mathf.Abs(rigidbody.velocity.x) <= 0.05)
         {
             animator.SetBool(IsWalking, false);
         } 
         else if (rigidbody.velocity.x > 0.05)
         {
-            Vector3 newScale = transform.localScale;
-            newScale.x = 1;
-            transform.localScale = newScale;
             animator.SetBool(IsWalking, true);
         }
         else
         {
-            Vector3 newScale = transform.localScale;
-            newScale.x = -1;
-            transform.localScale = newScale;
             animator.SetBool(IsWalking, true);
         }
     }

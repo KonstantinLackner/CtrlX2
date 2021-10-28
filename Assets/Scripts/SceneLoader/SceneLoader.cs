@@ -16,10 +16,6 @@ public class SceneLoader : MonoBehaviour
     public Sentence[] levelSentences { get; set; }
 
     public int currentLevelCount = 0;
-
-    private String kill;
-
-    private String safe;
     
     private void Awake()
     {
@@ -42,13 +38,13 @@ public class SceneLoader : MonoBehaviour
         nextSentence = sentence1;
         
         bool[] boolListVariationS1V1 = {false, true};
-        Variation testVariationS1V1 = new Variation("you burn the bridge", 1, boolListVariationS1V1);
+        Variation testVariationS1V1 = new Variation("you burn the bridge", 1, boolListVariationS1V1, null);
         
         bool[] boolListVariationS1V2 = {false, false};
-        Variation testVariationS1V2 = new Variation("you cross the bridge", 1, boolListVariationS1V2);
+        Variation testVariationS1V2 = new Variation("you cross the bridge", 1, boolListVariationS1V2, null);
         
         bool[] boolListVariationS1V3 = {true, false};
-        Variation testVariationS1V3 = new Variation("you cross the burning bridge", 1, boolListVariationS1V3);
+        Variation testVariationS1V3 = new Variation("you cross the burning bridge", 1, boolListVariationS1V3, null);
             
         LinkedList<Variation> variationsSentence1 = new LinkedList<Variation>();
         variationsSentence1.AddLast(testVariationS1V1);
@@ -65,13 +61,13 @@ public class SceneLoader : MonoBehaviour
         Sentence sentence2 = new Sentence("you are not a hero", 2, 0);
         
         bool[] boolListVariationS2V1 = {true, false};
-        Variation testVariationS2V1 = new Variation("you are a hero", 2, boolListVariationS2V1);
+        Variation testVariationS2V1 = new Variation("you are a hero", 2, boolListVariationS2V1, null);
         
         bool[] boolListVariationS2V2 = {false, true};
-        Variation testVariationS2V2 = new Variation("you are not", 2, boolListVariationS2V2);
+        Variation testVariationS2V2 = new Variation("you are not", 2, boolListVariationS2V2, null);
         
         bool[] boolListVariationS2V3 = {false, false};
-        Variation testVariationS2V3 = new Variation("you are not a hero", 2, boolListVariationS2V3);
+        Variation testVariationS2V3 = new Variation("you are not a hero", 2, boolListVariationS2V3, null);
             
         LinkedList<Variation> variationsSentence2 = new LinkedList<Variation>();
         variationsSentence2.AddLast(testVariationS2V1);
@@ -87,36 +83,30 @@ public class SceneLoader : MonoBehaviour
         */
         Sentence sentence3 = new Sentence("a princess rescues a dragon from you", 0, 2);
         
-        // princess aggressive, princess target, dragon aggressive, dragon target, you target
-        bool[] boolListVariationS3V1 = {true, false, false, false, true};
-        kill = "you";
-        safe = "dragon";
-        Variation testVariationS3V1 = new Variation("a princess rescues a dragon from you", 3, boolListVariationS3V1);
+        // princess aggressive, princess target, dragon aggressive, dragon target, you target, playerSafes
+        bool[] boolListVariationS3V1 = {true, false, false, false, true, false};
+        String[] killSafe1 = {"you", "dragon"};
+        Variation testVariationS3V1 = new Variation("a princess rescues a dragon from you", 3, boolListVariationS3V1, killSafe1);
         
-        bool[] boolListVariationS3V2 = {true, false, false, true, false};
-        kill = "dragon";
-        safe = "you";
-        Variation testVariationS3V2 = new Variation("a princess rescues you from a dragon", 3, boolListVariationS3V2);
+        bool[] boolListVariationS3V2 = {true, false, false, true, false, false};
+        String[] killSafe2 = {"dragon", "you"};
+        Variation testVariationS3V2 = new Variation("a princess rescues you from a dragon", 3, boolListVariationS3V2, killSafe2);
         
-        bool[] boolListVariationS3V3 = {false, true, true, false, false};
-        kill = "princess";
-        safe = "you";
-        Variation testVariationS3V3 = new Variation("a dragon rescues you from a princess", 3, boolListVariationS3V3);
+        bool[] boolListVariationS3V3 = {false, true, true, false, false, false};
+        String[] killSafe3 = {"princess", "you"};
+        Variation testVariationS3V3 = new Variation("a dragon rescues you from a princess", 3, boolListVariationS3V3, killSafe3);
         
-        bool[] boolListVariationS3V4 = {false, false, true, false, true};
-        kill = "you";
-        safe = "princess";
-        Variation testVariationS3V4 = new Variation("a dragon rescues a princess from you", 3, boolListVariationS3V4);
+        bool[] boolListVariationS3V4 = {false, false, true, false, true, false};
+        String[] killSafe4 = {"you", "princess"};
+        Variation testVariationS3V4 = new Variation("a dragon rescues a princess from you", 3, boolListVariationS3V4, killSafe4);
         
-        bool[] boolListVariationS3V5 = {false, true, true, false, false};
-        kill = "dragon";
-        safe = "princess";
-        Variation testVariationS3V5 = new Variation("you rescue a princess from a dragon", 3, boolListVariationS3V5);
+        bool[] boolListVariationS3V5 = {false, true, true, false, false, true};
+        String[] killSafe5 = {"dragon", "princess"};
+        Variation testVariationS3V5 = new Variation("you rescue a princess from a dragon", 3, boolListVariationS3V5, killSafe5);
         
-        bool[] boolListVariationS3V6 = {true, false, false, true, false};
-        kill = "princess";
-        safe = "dragon";
-        Variation testVariationS3V6 = new Variation("you rescue a dragon from a princess", 3, boolListVariationS3V6);
+        bool[] boolListVariationS3V6 = {true, false, false, true, false, true};
+        String[] killSafe6 = {"princess", "dragon"};
+        Variation testVariationS3V6 = new Variation("you rescue a dragon from a princess", 3, boolListVariationS3V6, killSafe6);
         
         LinkedList<Variation> variationsSentence3 = new LinkedList<Variation>();
         variationsSentence3.AddLast(testVariationS3V1);
@@ -137,7 +127,7 @@ public class SceneLoader : MonoBehaviour
         gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
     }
 
-    public void LoadLevel(int levelToLoad, bool[] boolList)
+    public void LoadLevel(int levelToLoad, bool[] boolList, String[] killSafe)
     {
         if (levelToLoad == 1)
         {
@@ -147,7 +137,7 @@ public class SceneLoader : MonoBehaviour
             LoadLevel2(boolList);
         } else if (levelToLoad == 3)
         {
-            LoadLevel3(boolList);
+            LoadLevel3(boolList, killSafe);
         }
     }
     
@@ -192,9 +182,9 @@ public class SceneLoader : MonoBehaviour
         SceneManager.LoadScene("Scenes/Level2");
     }
     
-    public void LoadLevel3(bool[] boolList)
+    public void LoadLevel3(bool[] boolList, String[] killSafe)
     {
-        gameBools.AssignBoolsLevel3(boolList, kill, safe);
+        gameBools.AssignBoolsLevel3(boolList, killSafe[0], killSafe[1]);
         StartCoroutine(LoadLevel3Coroutine());
     }
 

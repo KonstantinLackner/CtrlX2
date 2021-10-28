@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.SceneManagement;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -18,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float checkGroundRadius;
 
     [SerializeField] private LayerMask groundLayer;
-    [SerializeField] private MovementAnimations movementAnimations;
     private static readonly int Burning = Animator.StringToHash("Burning");
     private bool burning = false;
 
@@ -34,9 +34,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (canMove) {
+        if (canMove)
+        {
             Move();
         }
+
         CheckIfGrounded();
         Jump();
         JumpEnhancement();
@@ -83,7 +85,7 @@ public class PlayerMovement : MonoBehaviour
             isGrounded = false;
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.layer == 8)
@@ -106,12 +108,16 @@ public class PlayerMovement : MonoBehaviour
     {
         StartCoroutine(playerVoidKill());
     }
-    
+
     private IEnumerator playerVoidKill()
     {
         Destroy(GetComponent<SpriteRenderer>());
         canMove = false;
         yield return new WaitForSeconds(5);
-        sceneLoader.LoadInputLevel();
+        
+        if (!SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByName("Level3")))
+        {
+            sceneLoader.LoadInputLevel();
+        }
     }
 }

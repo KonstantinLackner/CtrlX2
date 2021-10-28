@@ -21,10 +21,13 @@ public class AttackScript : MonoBehaviour
             Collider2D[] damagedObjects =
                 Physics2D.OverlapCircleAll(attackOrigin.position, attackRadius, hurtableLayerMask);
 
-            foreach (var damagedObject in damagedObjects)
+            if (damagedObjects.Length > 0)
             {
-                Hurtable hurtable = damagedObject.GetComponent<Hurtable>();
-                hurtable.reduceHealth();
+                foreach (var damagedObject in damagedObjects)
+                {
+                    Hurtable hurtable = damagedObject.GetComponent<Hurtable>();
+                    hurtable.reduceHealth();
+                }
             }
         }
     }

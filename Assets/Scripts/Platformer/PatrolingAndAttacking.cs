@@ -26,7 +26,7 @@ public class PatrolingAndAttacking : MonoBehaviour
 
     public GameObject aggressionAgainst { get; set; }
 
-    public bool aggressive { get; set; }
+    public bool aggressive { get; set; } = false;
 
     private bool attacking = false;
 
@@ -52,7 +52,7 @@ public class PatrolingAndAttacking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (aggressive)
+        if (aggressive && aggressionAgainst != null)
         {
             if (gameObject.transform.position.x <= aggressionAgainst.transform.position.x)
             {
@@ -76,7 +76,7 @@ public class PatrolingAndAttacking : MonoBehaviour
         }
 
         // ATTACK
-        if (aggressive && (Mathf.Abs(gameObject.transform.position.x - aggressionAgainst.transform.position.x) <=
+        if (aggressive && aggressionAgainst != null && (Mathf.Abs(gameObject.transform.position.x - aggressionAgainst.transform.position.x) <=
                            rangeToHit))
         {
             if (!attacking)
@@ -97,6 +97,11 @@ public class PatrolingAndAttacking : MonoBehaviour
     {
         Debug.Log("Attacking");
         myAnimator.SetTrigger(Attack);
+
+        if (!aggressionAgainst.name.Equals("Player"))
+        {
+            yield return new WaitForSeconds(1);
+        }
 
         Collider2D[] damagedObjects =
             Physics2D.OverlapCircleAll(attackOrigin.position, attackRadius, hurtableLayerMask);
