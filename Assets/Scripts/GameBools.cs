@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GameBools : MonoBehaviour
@@ -12,6 +13,10 @@ public class GameBools : MonoBehaviour
     public bool Level3DragonAggressive { get; set; } = false;
     public bool Level3DragonTarget { get; set; } = false;
     public bool Level3YouTarget { get; set; } = false;
+    
+    public String kill { get; set; }
+    
+    public String safe { get; set; }
 
     private void Awake()
     {
@@ -55,7 +60,7 @@ public class GameBools : MonoBehaviour
         }
     }
     
-    public void AssignBoolsLevel3(bool[] boolList)
+    public void AssignBoolsLevel3(bool[] boolList, String kill, String safe)
     {
         for (int i = 0; i <= boolList.Length; i++)
         {
@@ -78,5 +83,8 @@ public class GameBools : MonoBehaviour
                     break;
             }
         }
+        this.kill = kill;
+        
+        this.safe = safe;
     }
 }

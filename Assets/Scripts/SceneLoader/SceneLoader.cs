@@ -17,6 +17,10 @@ public class SceneLoader : MonoBehaviour
 
     public int currentLevelCount = 0;
 
+    private String kill;
+
+    private String safe;
+    
     private void Awake()
     {
         if (instance == null)
@@ -85,21 +89,33 @@ public class SceneLoader : MonoBehaviour
         
         // princess aggressive, princess target, dragon aggressive, dragon target, you target
         bool[] boolListVariationS3V1 = {true, false, false, false, true};
+        kill = "you";
+        safe = "dragon";
         Variation testVariationS3V1 = new Variation("a princess rescues a dragon from you", 3, boolListVariationS3V1);
         
         bool[] boolListVariationS3V2 = {true, false, false, true, false};
+        kill = "dragon";
+        safe = "you";
         Variation testVariationS3V2 = new Variation("a princess rescues you from a dragon", 3, boolListVariationS3V2);
         
         bool[] boolListVariationS3V3 = {false, true, true, false, false};
+        kill = "princess";
+        safe = "you";
         Variation testVariationS3V3 = new Variation("a dragon rescues you from a princess", 3, boolListVariationS3V3);
         
         bool[] boolListVariationS3V4 = {false, false, true, false, true};
+        kill = "you";
+        safe = "princess";
         Variation testVariationS3V4 = new Variation("a dragon rescues a princess from you", 3, boolListVariationS3V4);
         
         bool[] boolListVariationS3V5 = {false, true, true, false, false};
+        kill = "dragon";
+        safe = "princess";
         Variation testVariationS3V5 = new Variation("you rescue a princess from a dragon", 3, boolListVariationS3V5);
         
         bool[] boolListVariationS3V6 = {true, false, false, true, false};
+        kill = "princess";
+        safe = "dragon";
         Variation testVariationS3V6 = new Variation("you rescue a dragon from a princess", 3, boolListVariationS3V6);
         
         LinkedList<Variation> variationsSentence3 = new LinkedList<Variation>();
@@ -178,7 +194,7 @@ public class SceneLoader : MonoBehaviour
     
     public void LoadLevel3(bool[] boolList)
     {
-        gameBools.AssignBoolsLevel3(boolList);
+        gameBools.AssignBoolsLevel3(boolList, kill, safe);
         StartCoroutine(LoadLevel3Coroutine());
     }
 

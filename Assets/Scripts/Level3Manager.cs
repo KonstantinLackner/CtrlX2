@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,9 @@ public class Level3Manager : MonoBehaviour
     private PatrolingAndAttacking princessScript;
     private PatrolingAndAttacking dragonScript;
     private AttackScript attackScriptPlayer;
+
+    private String kill;
+    private String safe;
 
     void Start()
     {
@@ -26,11 +30,59 @@ public class Level3Manager : MonoBehaviour
         GameBools gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
 
         // princess aggressive, princess target, dragon aggressive, dragon target, you target
-        initLevel(gameBools.Level3PrincessAggressive, gameBools.Level3PrincessTarget, gameBools.Level3DragonAggressive, gameBools.Level3DragonTarget, gameBools.Level3YouTarget);
+        initLevel(gameBools.Level3PrincessAggressive, gameBools.Level3PrincessTarget, gameBools.Level3DragonAggressive, gameBools.Level3DragonTarget, gameBools.Level3YouTarget, gameBools.kill, gameBools.safe);
     }
 
-    public void initLevel(bool princessAggressive, bool princessTarget, bool dragonAggressive, bool dragonTarget, bool youTarget)
+    private void Update()
     {
+        player = GameObject.Find("Player");
+        princess = GameObject.Find("Princess");
+        dragon = GameObject.Find("Dragon");
+        
+        if (kill.Equals("dragon") && safe.Equals("princess"))
+        {
+            if (dragon == null && princess != null)
+            {
+                // Won
+            }
+        } else if (kill.Equals("princess") && safe.Equals("dragon"))
+        {
+            if (princess == null && dragon != null)
+            {
+                // Won
+            }
+        } else if (kill.Equals("you") && safe.Equals("princess"))
+        {
+            if (player == null && princess != null)
+            {
+                // Won
+            }
+        } else if (kill.Equals("princess") && safe.Equals("you"))
+        {
+            if (princess == null && player != null)
+            {
+                // Won
+            }
+        } else if (kill.Equals("you") && safe.Equals("dragon"))
+        {
+            if (player == null && dragon != null)
+            {
+                // Won
+            }
+        } else if (kill.Equals("dragon") && safe.Equals("you"))
+        {
+            if (dragon == null && player != null)
+            {
+                // Won
+            }
+        }
+    }
+
+    public void initLevel(bool princessAggressive, bool princessTarget, bool dragonAggressive, bool dragonTarget, bool youTarget, String kill, String safe)
+    {
+        this.kill = kill;
+        this.safe = safe;
+        
         if (princessAggressive)
         {
             princessScript.aggressive = true;
