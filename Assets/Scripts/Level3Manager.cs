@@ -36,7 +36,7 @@ public class Level3Manager : MonoBehaviour
 
         // princess aggressive, princess target, dragon aggressive, dragon target, you target
         initLevel(gameBools.Level3PrincessAggressive, gameBools.Level3PrincessTarget, gameBools.Level3DragonAggressive,
-            gameBools.Level3DragonTarget, gameBools.Level3YouSafe, gameBools.Level3YouTarget, gameBools.kill, gameBools.safe);
+            gameBools.Level3DragonTarget, gameBools.Level3YouTarget, gameBools.Level3YouSafe, gameBools.kill, gameBools.safe);
     }
 
     private void Update()
