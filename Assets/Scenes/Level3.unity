@@ -2488,7 +2488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myRigidBody: {fileID: 1948387216}
   speed: 3
-  rangeToHit: 1
+  rangeToHit: 2
   pointLeft: {fileID: 1340508230}
   pointRight: {fileID: 1534428762}
   attackOrigin: {fileID: 975219281}
