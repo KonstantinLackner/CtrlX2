@@ -50,15 +50,15 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
+        float moveBy = horizontalAxis * speed;
         if (horizontalAxis != 0)
         {
             if (!audioSource.isPlaying)
             {
                 audioSource.PlayOneShot(walkSound);
             }
-            float moveBy = horizontalAxis * speed;
-            playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
         }
+        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
     }
 
     void Jump()

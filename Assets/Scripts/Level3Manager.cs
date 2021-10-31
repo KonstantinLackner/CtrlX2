@@ -20,8 +20,12 @@ public class Level3Manager : MonoBehaviour
 
     private SceneLoader sceneLoader;
 
+    public AudioSource audioSource;
+    
     void Start()
     {
+        audioSource.Play();
+        
         player = GameObject.Find("Player");
         princess = GameObject.Find("Princess");
         dragon = GameObject.Find("Dragon");

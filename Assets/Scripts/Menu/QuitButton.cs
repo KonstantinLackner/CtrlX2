@@ -6,10 +6,13 @@ using UnityEngine;
 public class QuitButton : MonoBehaviour
 {
     private SpriteRenderer buttonSprite;
+
+    public AudioSource audioSource;
     
     // Start is called before the first frame update
     void Start()
     {
+        audioSource.Play();
         buttonSprite = gameObject.GetComponent<SpriteRenderer>();
     }
 
