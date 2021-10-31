@@ -2,18 +2,25 @@ using UnityEngine;
 
 public class Level1Manager : MonoBehaviour
 {
+    public AudioSource audioSourceBM;
+    public AudioSource audioSourceEffects;
+    
+    
+    
     // Start is called before the first frame update
     void Start()
     {
         GameBools gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
         
         initLevel(gameBools.Level1Fire, gameBools.Level1BridgeBurn);
+        audioSourceBM.Play();
     }
 
     public void initLevel(bool fire, bool bridgeBurn)
     {
         if (fire)
         {
+            audioSourceEffects.Play();
             GameObject.Find("bridge").SetActive(true);
             GameObject.Find("BridgeFire").SetActive(true);
             GameObject.Find("burnedBridge").SetActive(false);
@@ -22,6 +29,7 @@ public class Level1Manager : MonoBehaviour
             GameObject.Find("Main Camera").GetComponent<Camera>().backgroundColor = new Color(1f, 0.4f, 0f);
         } else if (bridgeBurn)
         {
+            audioSourceEffects.Play();
             GameObject.Find("BridgeFireLeft").SetActive(true);
             GameObject.Find("BridgeFireRight").SetActive(true);
             GameObject.Find("burnedBridge").SetActive(true);

@@ -13,6 +13,7 @@ public class NextButton : MonoBehaviour
     public Sprite spr4;
     public Sprite spr5;
     public Sprite spr6;
+    public Sprite spr7;
     private Sprite[] sprites;
     private int count;
     private Sprite currentSprite;
@@ -21,7 +22,7 @@ public class NextButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprites = new[] {spr1, spr2, spr3, spr4, spr5, spr6};
+        sprites = new[] {spr1, spr2, spr3, spr4, spr5, spr6, spr7};
         info = GameObject.Find("Info").GetComponent<SpriteRenderer>();
         buttonSprite = gameObject.GetComponent<SpriteRenderer>();
         count = 0;

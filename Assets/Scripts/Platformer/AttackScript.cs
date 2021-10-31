@@ -12,11 +12,15 @@ public class AttackScript : MonoBehaviour
 
     public bool canAttack = false;
 
+    public AudioSource AudioSource;
+    public AudioClip swordAttack;
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && canAttack)
         {
+            AudioSource.PlayOneShot(swordAttack);
             animator.SetTrigger(Attack);
             Collider2D[] damagedObjects =
                 Physics2D.OverlapCircleAll(attackOrigin.position, attackRadius, hurtableLayerMask);

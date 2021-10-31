@@ -32,6 +32,10 @@ public class PatrolingAndAttacking : MonoBehaviour
 
     private GameBools gameBools;
 
+    public AudioSource audioSource;
+
+    public AudioClip attackSound;
+
     private void Start()
     {
         gameBools = GameObject.Find("GameBools").GetComponent<GameBools>();
@@ -81,6 +85,7 @@ public class PatrolingAndAttacking : MonoBehaviour
         {
             if (!attacking)
             {
+                audioSource.PlayOneShot(attackSound);
                 attacking = true;
                 StartCoroutine(attack());
             }

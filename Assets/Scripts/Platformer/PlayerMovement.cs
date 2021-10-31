@@ -25,6 +25,9 @@ public class PlayerMovement : MonoBehaviour
     private bool canMove = true;
     private SceneLoader sceneLoader;
 
+    public AudioSource audioSource;
+    public AudioClip walkSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
         }
-
+        
         CheckIfGrounded();
         Jump();
         JumpEnhancement();
@@ -47,9 +50,15 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
-        float moveBy = horizontalAxis * speed;
-
-        playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
+        if (horizontalAxis != 0)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.PlayOneShot(walkSound);
+            }
+            float moveBy = horizontalAxis * speed;
+            playerRigidbody.velocity = new Vector2(moveBy, playerRigidbody.velocity.y);
+        }
     }
 
     void Jump()
@@ -114,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
         Destroy(GetComponent<SpriteRenderer>());
         canMove = false;
         yield return new WaitForSeconds(5);
-        
+
         if (!SceneManager.GetActiveScene().Equals(SceneManager.GetSceneByName("Level3")))
         {
             sceneLoader.LoadInputLevel();

@@ -242,6 +242,7 @@ MonoBehaviour:
   spr4: {fileID: 21300000, guid: 42b18776bff61fe4e8c39418f1c64747, type: 3}
   spr5: {fileID: 21300000, guid: 56e96c01eedad6744a81f095bcbe7abd, type: 3}
   spr6: {fileID: 21300000, guid: 68c6d0bd581159649a32e12a072533cd, type: 3}
+  spr7: {fileID: 21300000, guid: f6936cf475b18a442b41a1b04a6b4739, type: 3}
 --- !u!60 &603288952
 PolygonCollider2D:
   m_ObjectHideFlags: 0
