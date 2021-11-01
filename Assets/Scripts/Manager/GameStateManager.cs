@@ -231,5 +231,13 @@ namespace DefaultNamespace
 
             return product;
         }
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
+        }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
@@ -36,6 +37,7 @@ namespace DefaultNamespace
                 gameObject.GetComponent<Image>().color = Color.red;
                 // So the button can't be clicked until a new word order has been established
                 gameObject.GetComponent<CanvasGroup>().blocksRaycasts = false;
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
     }
