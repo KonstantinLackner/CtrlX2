@@ -216,8 +216,8 @@ GameObject:
   m_Component:
   - component: {fileID: 480582589}
   - component: {fileID: 480582588}
-  - component: {fileID: 480582587}
   - component: {fileID: 480582590}
+  - component: {fileID: 480582587}
   m_Layer: 0
   m_Name: replay
   m_TagString: Untagged
@@ -234,7 +234,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 480582586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19cd80317be3e924c9879d5d5c982ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 093c81992e3ffc74d892273ea7af5451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!212 &480582588
